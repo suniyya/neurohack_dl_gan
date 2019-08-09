@@ -34,11 +34,11 @@ def resize_images(pngpath, outPath, size):
         
     
         
-    outPath = outPath + '/slices/axis'
+    outPath = outPath + '/axis'
     
     for axis in [0, 1, 2]:
         # coronal, sag, axial directions
-        filepath = pngpath + '/slices/axis' + str(axis) + '/'
+        filepath = pngpath + '/axis' + str(axis) + '/'
         out = outPath + str(axis)
         
         if not os.path.exists(out):
@@ -59,8 +59,8 @@ def resize_images(pngpath, outPath, size):
             slicenumber = slicenumber.split('.png')[0]
             origimg = Image.open(i)
             
-            outFile =  out + '/' + filename_noext + "_" + str(size) + \
-            "_slice_" + slicenumber + "x" + slicenumber + ".png"
+            outFile =  out + '/' + filename_noext + "_" +  \
+            "_slice_" + str(size) + "x" + str(size) + ".png"
             
             img = image_padding(origimg, size)
             img.save(outFile.format(slicenumber), img.format)
